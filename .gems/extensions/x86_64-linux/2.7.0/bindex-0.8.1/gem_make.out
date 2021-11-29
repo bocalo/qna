@@ -1,0 +1,15 @@
+current directory: /home/mikhail/Documents/qna/.gems/gems/bindex-0.8.1/ext/skiptrace
+/home/mikhail/.rbenv/versions/2.7.0/bin/ruby -I /home/mikhail/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20211126-27935-1ogo8gi.rb extconf.rb
+creating Makefile
+
+current directory: /home/mikhail/Documents/qna/.gems/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /home/mikhail/Documents/qna/.gems/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/mikhail/Documents/qna/.gems/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20211126-27935-582o3q/skiptrace/internal
