@@ -90,7 +90,7 @@ RSpec.describe QuestionsController, type: :controller do
     end
     context 'with invalid attributes' do
       before { patch :update, params: { id: question, question: attributes_for(:question, :invalid) } }
-      
+
       it 'does not change question' do
         question.reload
 
@@ -100,6 +100,17 @@ RSpec.describe QuestionsController, type: :controller do
       it 're-renders edit view' do
         expect(response).to render_template :edit
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let!(:question) { create(:question) }
+    it 'deletes the question' do
+      expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
+    end
+    it 'redirects to index' do
+      delete :destroy, params: { id: question }
+      expect(response).to redirect_to questions_path
     end
   end
 end
