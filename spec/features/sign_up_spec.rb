@@ -5,13 +5,26 @@ feature 'User can sign up', %q{
   As an unauthenticated user
   I'd like to be able to sign up
 } do
-  given(:user) { create(:user) }
+  background { visit new_user_registration_path }
 
-  scenario 'Authenticated user tries to sign out' do
-    sign_in(user)
+  feature 'User tries to sign up with' do
+    background do
+      fill_in 'Email', with: 'user@test.com'
+      fill_in 'Password', with: '12345678'
+    end
 
-    click_on 'Log out'
+    scenario 'valid dates' do
+      fill_in 'Password confirmation', with: '12345678'
+      click_on 'Sign up'
 
-    expect(page).to have_content 'Signed out successfully.'
+      expect(page).to have_content 'Welcome! You have signed up successfully.'
+    end
+
+    scenario 'invalid dates' do
+      fill_in 'Password confirmation', with: '12345555'
+      click_on 'Sign up'
+
+      expect(page).to have_content "Password confirmation doesn't match"
+    end
   end
 end
