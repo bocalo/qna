@@ -27,4 +27,18 @@ feature 'User can sign up', %q{
       expect(page).to have_content "Password confirmation doesn't match"
     end
   end
+
+  feature 'authenticated user' do
+    given(:user) { create(:user) }
+
+    scenario 'tries to sign up' do
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      fill_in 'Password confirmation', with: user.password_confirmation
+
+      click_on 'Sign up'
+      
+      expect(page).to have_content 'Email has already been taken'
+    end
+  end
 end
