@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User can look over list of questions', %q{
-  In order to get answer on my question
+  In order to find question
   As a user
   I'd like to be able to look over list of questions
 } do
@@ -13,7 +13,7 @@ feature 'User can look over list of questions', %q{
 
   scenario 'Authenticated user can look over list of questions' do
     sign_in(user)
-    
+
     questions.each do |question| 
       expect(page).to have_content(question.title) 
       expect(page).to have_content(question.body) 
