@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title= 'Qna'
+    title 'Qna'
     meta name="viewport" content="width=device-width,initial-scale=1"
     = csrf_meta_tags 
     = csp_meta_tag 
@@ -11,8 +11,8 @@ html
 
   body
     - if user_signed_in?
-      = link_to 'Log out', destroy_user_session_path, method: Devise.sign_out_via 
-    p.notice= notice 
-    p.alert= alert 
+      = link_to 'Log out', destroy_user_session_path, method: :delete
+    p.notice = notice 
+    p.alert = alert 
     = yield
   

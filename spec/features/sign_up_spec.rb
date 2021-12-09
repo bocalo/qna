@@ -6,7 +6,7 @@ feature 'User can sign up', %q{
   I'd like to be able to sign up
 } do
   background { visit new_user_registration_path }
-
+    
   feature 'User tries to sign up with' do
     background do
       fill_in 'Email', with: 'user@test.com'
