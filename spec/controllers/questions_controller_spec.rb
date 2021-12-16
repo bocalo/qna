@@ -62,8 +62,7 @@ RSpec.describe QuestionsController, type: :controller do
     context 'with valid attributes' do
       
       it 'saves a new question in the database' do
-
-        expect { post :create, params: { question: attributes_for(:question) } }.to change(Question.where(user: user), :count).by(1)
+        expect { post :create, params: { question: attributes_for(:question) } }.to change(Question, :count).by(1)
       end
       it 'redirects to show view' do
         post :create, params: { question: attributes_for(:question) }
@@ -125,7 +124,7 @@ RSpec.describe QuestionsController, type: :controller do
     context 'Authorized author' do
 
       it 'deletes the question' do
-        expect { delete :destroy, params: { id: question } }.to change(Question.where(user: user), :count).by(-1)
+        expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
       end
 
       it 'redirects to index' do
@@ -136,7 +135,7 @@ RSpec.describe QuestionsController, type: :controller do
 
     context 'Authorized other user' do
       it 'deletes the question' do
-        expect { delete :destroy, params: { id: other_question } }.to change(Question, :count)
+        expect { delete :destroy, params: { id: other_question } }.to_not change(Question, :count)
       end
 
       it 'redirects to index' do
@@ -146,9 +145,3 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 end
-
-  
-
-
-  
- 
