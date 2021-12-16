@@ -1,13 +1,15 @@
 h1= @question.title
-p= @question.body
+h1= @question.body
+
 - if current_user&.author?(@question)
-  p
-    = link_to 'Delete', question_path(@question),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
+  = link_to 'Delete', question_path(@question),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' }
 
-h2 Answers 
-= render @question.answers 
+=render 'answers/form'
 
-p New answer 
-= render 'answers/form'
+table 
+  tr 
+    th body 
+
+  = render @question.answers

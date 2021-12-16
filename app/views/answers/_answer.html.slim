@@ -1,7 +1,7 @@
-- if answer.persisted?
-  p= answer.body
-  - if current_user&.author(answer)
-    p
+tr 
+  th= answer.body 
+  - if user_signed_in? && current_user&.author?(answer)
     = link_to 'Delete answer', answer_path(answer),
-      method: :delete,
-      data: { confirm: 'Are you sure?' }
+                                  method: :delete,
+                                  data: { confirm: 'Are you sure?' }
+

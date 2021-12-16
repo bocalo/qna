@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it { should have_many(:answers).dependent(:destroy) }
+  it { should have_many(:questions).dependent(:destroy) }
+  
   it { should validate_presence_of :email }
   it { should validate_presence_of :password }
 
@@ -14,5 +17,8 @@ RSpec.describe User, type: :model do
 
   it 'User is author of question' do
     expect(user).to be_author(question)
+  end
+  it 'User is author of answer' do
+    expect(user).to be_author(answer)
   end
 end

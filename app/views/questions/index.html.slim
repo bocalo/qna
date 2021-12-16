@@ -1,14 +1,9 @@
-h1 Questions
-table
-  tr
-    th Title 
-    th Body
+table 
+  tr 
+    th title 
+    th body 
 
-  - @questions.each do |question|
-    tr 
-      td= question.title
-      td= question.body
-      td= link_to 'Show', question_path(question)
-  
+  = render @questions
 
-p = link_to 'Ask question', new_question_path
+p= link_to 'Ask question', new_question_path
+    

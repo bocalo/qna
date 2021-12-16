@@ -6,7 +6,7 @@ feature 'User can sign in', %q{
   I'd like to be able to sign in
 } do
   given(:user) { create(:user) }
-  #visit login page
+  
   background { visit new_user_session_path }
     
   scenario 'Registered user tries to sign in' do
