@@ -1,64 +1,39 @@
 class AnswersController < ApplicationController
-  expose :question, ->{ Question.find(params[:question_id]) }
+  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :find_question, only: %i[create]
+  before_action :find_answer, only: [:destroy]
   
   def create
-    @answer = question.answers.new(answer_params)
+    @answer = @question.answers.new(answer_params)
+    @answer.user = current_user
 
     if @answer.save
-      redirect_to question
+      redirect_to @question, notice: 'Your answer was successfully created.'
     else
-      render :new
+      render 'questions/show'
+    end
+  end
+
+  def destroy
+    if current_user&.author?(@answer)
+      @answer.destroy
+      redirect_to question_path(@answer.question), notice: 'Answer successfully deleted.'
+    else
+      redirect_to question_path(@answer.question), notice: 'You have no rights to delete the answer.'
     end
   end
 
   private
 
+  def find_question
+    @question = Question.find(params[:question_id])
+  end
+
+  def find_answer
+    @answer = Answer.find(params[:id])
+  end
+
   def answer_params
     params.require(:answer).permit(:body)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #   def new
-#   end
-
-#   def create
-#     @answer = question.answers.new(answer_params)
-
-#     if @answer.save
-#       redirect_to question
-#     else
-#       render :new
-#     end
-#   end
-
-#   private
-
-#   def answer
-#     @answer ||= params[:id] ? Answer.find(params[:id]) : Answer.new
-#   end
-
-#   helper_method :answer
-
-#   def question
-#     @question ||= Question.find(params[:question_id])
-#   end
-
-#   helper_method :question
-
-#   def answer_params
-#     params.require(:answer).permit(:body)
-#   end
-# end
