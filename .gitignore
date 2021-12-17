@@ -29,3 +29,5 @@
 /config/master.key
 /config/database.yml
 /.gems
+
+/node_modules
