@@ -28,7 +28,3 @@ feature 'User can look over list of questions', %q{
   end
  end
 
-
-
-
-

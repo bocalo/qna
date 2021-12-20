@@ -30,13 +30,4 @@
 /config/database.yml
 /.gems
 
-<<<<<<< HEAD
 /node_modules
-=======
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
->>>>>>> 7526a3369d74da8466e442b45f9191e628191112
