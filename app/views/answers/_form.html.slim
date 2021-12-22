@@ -1,8 +1,9 @@
-= render 'shared/errors', resource: @answer 
+/= render 'shared/errors', resource: @answer 
 
 = form_with model: [ @question, @answer ], local: true do |f|
-  
-  = f.label :body, class: 'form-label'
-  = f.text_area :body, class: 'form-control'
-  = f.submit 'Create', class: 'btn btn-outline-primary'
+  .answer-errors
+    = render 'shared/errors', resource: @answer
+    = f.label :body, class: 'form-label'
+    = f.text_area :body, class: 'form-control'
+    = f.submit 'Create', class: 'btn btn-outline-primary'
   
