@@ -14,11 +14,11 @@
 
 /   = render @question.answers
 
-.questions 
+.questions.mb-3 
   = render @question
 
 - if user_signed_in?
   = render 'answers/form'
 
-.answers 
+.answers
   = render @question.answers
