@@ -5,7 +5,7 @@ feature 'User can edit his answer', %q{
   As an author of answer
   I'd like to be able to edit my answer
 } do
-
+  given!(:other_user) { create(:user) }
   given!(:user) { create(:user) }
   given!(:question) { create(:question) }
   given!(:answer) { create(:answer, question: question, user: user) }
@@ -50,8 +50,12 @@ feature 'User can edit his answer', %q{
       end
     end
 
-  #   scenario "tries to edit other user's question" do
-      
-  #   end
+    scenario "tries to edit other user's question" do
+      sign_in(other_user)
+      visit question_path(question)
+
+      expect(page).to have_content answer.body
+      expect(page).to_not have_link 'Edit'
+    end
   end
 end
