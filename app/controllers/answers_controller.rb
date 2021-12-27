@@ -1,17 +1,18 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :find_question, only: %i[create]
-  before_action :find_answer, only: [:destroy]
+  before_action :find_answer, only: [:destroy, :update]
   
   def create
-    @answer = @question.answers.new(answer_params)
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.create(answer_params)
     @answer.user = current_user
+    @answer.save
+  end
 
-    if @answer.save
-      redirect_to @question #, notice: 'Your answer was successfully created.'
-    # else
-    #   render 'questions/show'
-    end
+  def update
+    @answer = Answer.find(params[:id])
+    @answer.update(answer_params)
+    @question = @answer.question
   end
 
   def destroy
@@ -24,10 +25,6 @@ class AnswersController < ApplicationController
   end
 
   private
-
-  def find_question
-    @question = Question.find(params[:question_id])
-  end
 
   def find_answer
     @answer = Answer.find(params[:id])

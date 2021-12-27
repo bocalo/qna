@@ -1,6 +1,6 @@
 /= render 'shared/errors', resource: @answer 
 
-= form_with model: [ @question, @answer ], local: true do |f|
+= form_with model: [ @question, @answer ], local: false do |f|
   .answer-errors
     = render 'shared/errors', resource: @answer
     = f.label :body, class: 'form-label'
