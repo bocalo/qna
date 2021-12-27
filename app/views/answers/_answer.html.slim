@@ -1,20 +1,19 @@
-- if answer.persisted?
-    p= answer.body 
-    
-    - if user_signed_in? && current_user&.author?(answer)
-      p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
-
+div id = "answer_#{answer.id}"
+  - if answer.persisted?
+      p= answer.body 
       
-      
-      = button_to 'Delete answer', answer_path(answer),
-                                    method: :delete,
-                                    remote: true,
-                                    data: { confirm: 'Are you sure?' } 
+      - if user_signed_in? && current_user&.author?(answer)
+        p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
+        
+        = button_to 'Delete answer', answer_path(answer),
+                                      method: :delete,
+                                      remote: true,
+                                      data: { confirm: 'Are you sure?' } 
 
-    = form_with model: answer, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
-      = f.label :body, 'Your answer'
-      = f.text_area :body
-      = f.submit 'Save'
+      = form_with model: answer, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
+        = f.label :body, 'Your answer'
+        = f.text_area :body
+        = f.submit 'Save'
 
       
 
