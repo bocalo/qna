@@ -1,23 +1,34 @@
-/ tr 
-/   th= th= link_to question.title, question_path(question)
-/   th= question.body
+h1= @question.title
+p=  @question.body
 
-
-
-/ .question.mt-3 data-question-id="#{question.id}"
-/   h3= question.title
-/   p= question.body
-/   - if current_user&.author?(question)
-/       .btn-group 
-/         = link_to 'Delete question', question_path(question), method: :delete, class: 'btn btn-outline-danger'
-
+- if current_user&.author?(question)
+  .question-errors
+  = link_to "Edit question", '#', class: 'edit-question-link', data: { question_id: question.id }
+  br
+  = link_to "Delete question", question_path(@question),
+                                         method: :delete,
+                                         data: { confirm: 'Are you sure?' }
   
-/ h1= question.title
-/ p=  question.body
+  = form_with model: question, local: false,  class: 'hidden', html: { id: "edit-question-#{question.id}" } do |f|
+    = f.label :title, "Your question"
+    = f.text_area :title
+    = f.label :body, "Body question"
+    = f.text_area :body
+    = f.submit 'Save question'
 
 
-/ - if current_user&.author?(question)
-/   .question-errors
-/   = link_to "Delete question", question_path(question),
-/                                          method: :delete,
-/                                          data: { confirm: 'Are you sure?' }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
