@@ -1,32 +1,16 @@
-/ div id = "answer_#{answer.id}"
   - if answer.persisted?
-      p= answer.body 
-      
-      - if user_signed_in? && current_user&.author?(answer)
-        p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
-        
-        = button_to 'Delete answer', answer_path(answer),
-                                      method: :delete
-                                       
-
-      / = form_with model: answer, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
-      /   = f.label :body, 'Your answer'
-      /   = f.text_area :body
-      /   = f.submit 'Save'
-
-      
-
-
-
-- if answer.persisted?
     .answer.mb-3 data-answer-id="#{answer.id}"
       p= answer.body 
     
       - if user_signed_in? && current_user&.author?(answer)
+        = link_to 'Best answer'
+        p= 'The best answer'
+        
         p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
         
         = button_to 'Delete answer', answer_path(answer),
                                       method: :delete
+        
                                         
 
       = form_with model: answer, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
