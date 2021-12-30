@@ -103,5 +103,10 @@ RSpec.describe AnswersController, type: :controller do
     end
   end
 
-  
+  describe 'POST #mark_as_best' do
+    it 'mark best answer' do
+      post :mark_as_best, params: { id: answer }, format: :js
+      expect(assigns(:answer)).to be_best
+    end
+  end
 end

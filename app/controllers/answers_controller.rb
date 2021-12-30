@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :find_answer, only: [:destroy, :update]
+  before_action :find_answer, only: [:destroy, :mark_as_best, :update]
   
   def create
     @question = Question.find(params[:question_id])
@@ -21,6 +21,11 @@ class AnswersController < ApplicationController
     else
       redirect_to question_path(@answer.question), notice: 'You have no rights to delete the answer.'
     end
+  end
+
+  def mark_as_best
+    @answer.mark_as_best 
+    @question = @answer.question
   end
 
   private

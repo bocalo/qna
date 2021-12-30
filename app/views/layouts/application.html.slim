@@ -16,10 +16,12 @@ html
       = link_to 'Log in', new_user_session_path
 
     .container
-      p.notice = notice 
-      p.alert = alert 
-      
-      = yield
+      .row.justify-content-between
+        .col-4
+          p.notice = notice 
+          p.alert = alert 
+          
+          = yield
 
     
 

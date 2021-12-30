@@ -15,7 +15,7 @@ feature 'User can delete own question', %q{
     
     sign_in(user)
     visit question_path(question)
-    #save_and_open_page
+    
     click_on 'Delete question'
 
     expect(page).to have_content 'Question successfully deleted.'

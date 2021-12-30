@@ -3,16 +3,15 @@
       p= answer.body 
     
       - if user_signed_in? && current_user&.author?(answer)
-        = link_to 'Best answer'
-        p= 'The best answer'
-        
         p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
         
         = button_to 'Delete answer', answer_path(answer),
                                       method: :delete
+        - if answer.best
+          p= 'The best answer'
+        -else
+          = link_to 'Best answer', mark_as_best_answer_path(answer), method: :post, remote: true
         
-                                        
-
       = form_with model: answer, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
         .form-errors data-form-id="#{answer.id}"
         .mb-3
