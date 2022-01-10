@@ -1,0 +1,34 @@
+{
+  "answer.js": "/packs-test/js/answer-d79fcba635ada50441ae.js",
+  "answer.js.map": "/packs-test/js/answer-d79fcba635ada50441ae.js.map",
+  "application.js": "/packs-test/js/application-d0aaf6133424f21c53f4.js",
+  "application.js.map": "/packs-test/js/application-d0aaf6133424f21c53f4.js.map",
+  "entrypoints": {
+    "answer": {
+      "js": [
+        "/packs-test/js/answer-d79fcba635ada50441ae.js"
+      ],
+      "js.map": [
+        "/packs-test/js/answer-d79fcba635ada50441ae.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs-test/js/application-d0aaf6133424f21c53f4.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application-d0aaf6133424f21c53f4.js.map"
+      ]
+    },
+    "question": {
+      "js": [
+        "/packs-test/js/question-dbcbbf05c5bccedf36eb.js"
+      ],
+      "js.map": [
+        "/packs-test/js/question-dbcbbf05c5bccedf36eb.js.map"
+      ]
+    }
+  },
+  "question.js": "/packs-test/js/question-dbcbbf05c5bccedf36eb.js",
+  "question.js.map": "/packs-test/js/question-dbcbbf05c5bccedf36eb.js.map"
+}

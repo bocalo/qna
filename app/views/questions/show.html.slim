@@ -1,15 +1,23 @@
-h1= @question.title
-h1= @question.body
 
-- if current_user&.author?(@question)
-  = link_to 'Delete question', question_path(@question),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' }
+.question
+  = render @question
 
-=render 'answers/form'
+p.mt-3.span.badge.bg-secondary= 'Add an answer'
 
-table 
-  tr 
-    th body 
-
+- if user_signed_in?
+  = render 'answers/form'          
+h4.mt-3.span.badge.bg-secondary= 'Answer'
+.answers
   = render @question.answers
+
+br
+  = link_to 'Back', questions_path
+  
+
+
+
+
+
+  
+
+

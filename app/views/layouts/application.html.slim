@@ -15,6 +15,33 @@ html
     - elsif !current_page?(new_user_session_path)
       = link_to 'Log in', new_user_session_path
 
-    p.notice = notice 
-    p.alert = alert 
-    = yield
+    .container
+      .row.justify-content-between
+        .col-4
+          p.notice = notice 
+          p.alert = alert 
+          
+          = yield
+
+    
+
+
+  
+
+
+
+/ doctype 5
+/ html
+/   head
+/     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+/     title Qna
+/     meta content="width=device-width,initial-scale=1" name="viewport" /
+/     = csrf_meta_tags
+/     = csp_meta_tag
+/     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+/     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+/   body
+
+    
+    
+        
