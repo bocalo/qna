@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.create(answer_params)
+    @answer = @question.answers.new(answer_params)
     @answer.user = current_user
     @answer.save
   end
@@ -31,10 +31,10 @@ class AnswersController < ApplicationController
   private
 
   def find_answer
-    @answer = Answer.find(params[:id])
+    @answer = Answer.with_attached_files.find(params[:id])
   end
 
   def answer_params
-    params.require(:answer).permit(:body)
+    params.require(:answer).permit(:body, files: [])
   end
 end

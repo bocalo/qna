@@ -1,6 +1,10 @@
   - if answer.persisted?
     .answer.mb-3 data-answer-id="#{answer.id}"
       p= answer.body 
+      - if answer.files.attached?
+        - answer.files.each do |file|
+          .btn-group.mb-3 data-file-id="#{file.id}"
+            = link_to file.filename.to_s, url_for(file)
     
       - if user_signed_in? && current_user&.author?(answer)
         p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
