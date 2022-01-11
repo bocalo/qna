@@ -14,11 +14,16 @@ p=  @question.body
                                          data: { confirm: 'Are you sure?' }
   
   = form_with model: question, local: false,  class: 'hidden', html: { id: "edit-question-#{question.id}" } do |f|
-    = f.label :title, "Your question"
-    = f.text_area :title
-    = f.label :body, "Body question"
-    = f.text_area :body
-    = f.submit 'Save question'
+    .mb-3 
+      = f.label :title, "Your question", class: 'form-label'
+      = f.text_area :title, class: 'form-control'
+    .mb-3 
+      = f.label :body, "Body question", class: 'form-label'
+      = f.text_area :body, class: 'form-control'
+    .mb-3 
+      = f.label :files, class: 'form-label'
+      = f.file_field :files, multiple: true, class: 'form-control'
+      = f.submit 'Save question'
 
 
 
