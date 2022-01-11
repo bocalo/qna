@@ -21,4 +21,8 @@
         .mb-3
           = f.label :body, 'Your answer'
           = f.text_area :body
+        .mb-3 
+          = f.label :files, class: 'form-label'
+          = f.file_field :files, class: 'form-control', multiple: true
+
         = f.submit 'Save', class: 'btn btn-outline-primary'
