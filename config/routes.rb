@@ -7,5 +7,7 @@ Rails.application.routes.draw do
       post :mark_as_best, on: :member
     end
   end
+
+  resources :attachments, only: :destroy
 end
 
