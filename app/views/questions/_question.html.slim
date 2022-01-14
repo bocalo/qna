@@ -25,7 +25,7 @@ p=  @question.body
       = f.text_area :body, class: 'form-control'
     .mb-3 
       = f.label :files, class: 'form-label'
-      = f.file_field :files, multiple: true, class: 'form-control'
+      = f.file_field :files, multiple: true, direct_upload: true, class: 'form-control'
       = f.submit 'Save question'
 
 
