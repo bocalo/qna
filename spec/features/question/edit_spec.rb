@@ -15,34 +15,48 @@ feature 'User can edit his question', %{
     expect(page).to_not have_link 'Edit question'
   end
 
-  describe 'Authenticated user', js: true do
-    scenario 'edits own question' do
-      sign_in user
-      visit question_path(question)
-    
-      click_on 'Edit question'
-
-      within '.question' do
-        fill_in 'Your question', with: 'edited question title'
-        fill_in 'Body question', with: 'edited question body'
-        click_on 'Save question'
-
-        expect(page).to have_content 'edited question title'
-        expect(page).to_not have_selector 'textarea'
+  describe 'Authenticated user' do
+    describe 'Author' do
+      background do
+        sign_in user
+        visit question_path(question)
       end
-    end
 
-    scenario 'edits own question with errors' do
-      sign_in user
-      visit question_path(question)
+      scenario 'edits own question', js: true do
+        click_on 'Edit question'
 
-      click_on 'Edit question'
+        within '.question' do
+          fill_in 'Your question', with: 'edited question title'
+          fill_in 'Body question', with: 'edited question body'
+          click_on 'Save question'
 
-      within '.question' do
-        fill_in 'Your question', with: ''
+          expect(page).to have_content 'edited question title'
+          expect(page).to_not have_selector 'textarea'
+        end
+      end
 
-        click_on 'Save question'
-        expect(page).to have_content "Title can't be blank"
+      scenario 'edits own question with errors', js: true do
+        click_on 'Edit question'
+
+        within '.question' do
+          fill_in 'Your question', with: ''
+
+          click_on 'Save question'
+          expect(page).to have_content "Title can't be blank"
+        end
+      end
+
+      scenario 'edits his question with files', js: true do
+        within '.question' do
+          click_on 'Edit question'
+          fill_in 'Your question', with: 'edited question title'
+          fill_in 'Body question', with: 'edited question body'
+          attach_file 'File', ["#{Rails.root}/spec/rails_helper.rb", "#{Rails.root}/spec/spec_helper.rb"]
+          click_on 'Save question'
+
+          expect(page).to have_link 'rails_helper.rb'
+          expect(page).to have_link 'spec_helper.rb'
+        end
       end
     end
 
