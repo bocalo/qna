@@ -10,5 +10,16 @@
   .mb-3 
     = f.label :files, class: 'form-label'
     = f.file_field :files, multiple: true, direct_upload: true, class: 'form-control'
+
+  p Links:
+  .mb-3
+    = f.fields_for :links do |l|
+      .mb-3
+        = l.label :name, 'Link name'
+        = l.text_field :name
+      mb-3
+        = l.label :url
+        = l.text_field :url
+
   = f.submit 'Ask', class: 'btn btn-outline-primary'
 

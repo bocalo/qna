@@ -5,8 +5,16 @@ p=  @question.body
   - @question.files.each do |file|
     .question_file data-file-id="#{file.id}"
       p= link_to file.filename.to_s, url_for(file)
-      - if current_user&.author?(@question)
-        p= link_to 'Delete file', attachment_path(file), class: 'btn btn-danger', method: :delete, remote: true
+  
+  - if current_user&.author?(@question)
+    p= link_to 'Delete file', attachment_path(file), class: 'btn btn-danger', method: :delete, remote: true
+
+  .links.mb-3 
+    p Links:
+      ul 
+      - question.links.each do |link|
+        li= link_to link.name, link_url
+
 
 - if current_user&.author?(question)
   .question-errors
@@ -15,7 +23,7 @@ p=  @question.body
   = link_to "Delete question", question_path(@question),
                                          method: :delete,
                                          data: { confirm: 'Are you sure?' }
-  
+      
   = form_with model: question, local: false,  class: 'hidden', html: { id: "edit-question-#{question.id}" } do |f|
     .mb-3 
       = f.label :title, "Your question", class: 'form-label'
@@ -28,19 +36,4 @@ p=  @question.body
       = f.file_field :files, multiple: true, direct_upload: true, class: 'form-control'
       = f.submit 'Save question'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
