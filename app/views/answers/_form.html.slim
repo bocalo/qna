@@ -3,10 +3,22 @@
 
 = form_with model: [ @question, @answer ], local: false do |f|
   .mb-3
-    = f.label :body, class: 'form-label'
+    = f.label :body, 'Your answer', class: 'form-label'
     = f.text_area :body, class: 'form-control'
   .mb-3 
     = f.label :files, class: 'form-label'
     = f.file_field :files, multiple: true, direct_upload:true, class: 'form-label'
+  .mb-3 
+  p Links:
+  .mb-3
+    = f.fields_for :links do |l|
+      .mb-3
+        = l.label :name, 'Link name'
+        = l.text_field :name
+      .mb-3
+        = l.label :url
+        = l.text_field :url
+
   = f.submit 'Create', class: 'btn btn-outline-primary'
+
   
