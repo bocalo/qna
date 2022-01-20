@@ -11,15 +11,15 @@ feature 'User can add links to answer', %q{
 
   scenario 'User adds link when give an answer', js: true do
     sign_in(user)
-    visit new_question_path
+    visit question_path(question)
     
     fill_in 'Your answer', with: 'My answer'
     
     fill_in 'Link name', with: 'My gist'
     fill_in 'Url', with: gist_url
-
+    
     click_on 'Create'
-
+    
     within '.answers' do
       expect(page).to have_link 'My gist', href: gist_url
     end

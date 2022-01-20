@@ -31,10 +31,10 @@ feature 'User can delete his answer', %q{
 
   scenario 'user can delete file', js: true do
     sign_in(user)
-    visit question_path(answer.question)
-    
-    within '.answer' do
-      click_on 'Edit'
+    visit question_path(question)
+
+    within '.answers' do
+      click_on 'Edit answer'
       attach_file 'Files', "#{Rails.root}/spec/rails_helper.rb"
       click_on 'Save'
     end
