@@ -5,16 +5,14 @@
 p.mt-3.span.badge.bg-secondary= 'Add an answer'
 
 - if user_signed_in?
-  = render 'answers/form'          
-h4.mt-3.span.badge.bg-secondary= 'Answer'
+  = render 'answers/form'
+
 .answers
-  = render @question.answers
+  = render @question.answers          
 
 br
   = link_to 'Back', questions_path
   
-
-
 
 
 

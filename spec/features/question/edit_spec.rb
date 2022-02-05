@@ -7,7 +7,7 @@ feature 'User can edit his question', %{
 } do
   given!(:user) { create(:user) }
   given!(:question) { create(:question, user: user) }
-  given!(:other_user) { create(:user) }
+  given(:other_user) { create(:user) }
   
   scenario 'Unauthenticated user can not edit question' do
     visit questions_path
@@ -25,10 +25,10 @@ feature 'User can edit his question', %{
       scenario 'edits own question', js: true do
         click_on 'Edit question'
 
-        within '.question' do
-          fill_in 'Your question', with: 'edited question title'
-          fill_in 'Body question', with: 'edited question body'
-          click_on 'Save question'
+        within all('.question')[0] do
+          fill_in 'Title', with: 'edited question title'
+          fill_in 'Body', with: 'edited question body'
+          click_on 'Save'
 
           expect(page).to have_content 'edited question title'
           expect(page).to_not have_selector 'textarea'
@@ -36,23 +36,26 @@ feature 'User can edit his question', %{
       end
 
       scenario 'edits own question with errors', js: true do
+        
+        
         click_on 'Edit question'
+        
+        within all('.question')[0] do
+          
+          fill_in 'Title', with: ''
 
-        within '.question' do
-          fill_in 'Your question', with: ''
-
-          click_on 'Save question'
+          click_on 'Save'
           expect(page).to have_content "Title can't be blank"
         end
       end
 
       scenario 'edits his question with files', js: true do
-        within '.question' do
+        within all('.question')[0] do
           click_on 'Edit question'
-          fill_in 'Your question', with: 'edited question title'
-          fill_in 'Body question', with: 'edited question body'
+          fill_in 'Title', with: 'edited question title'
+          fill_in 'Body', with: 'edited question body'
           attach_file 'File', ["#{Rails.root}/spec/rails_helper.rb", "#{Rails.root}/spec/spec_helper.rb"]
-          click_on 'Save question'
+          click_on 'Save'
 
           expect(page).to have_link 'rails_helper.rb'
           expect(page).to have_link 'spec_helper.rb'

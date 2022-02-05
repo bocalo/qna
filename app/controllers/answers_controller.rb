@@ -17,15 +17,12 @@ class AnswersController < ApplicationController
   def destroy
     if current_user&.author?(@answer)
       @answer.destroy
-      redirect_to question_path(@answer.question), notice: 'Answer successfully deleted.'
-    else
-      redirect_to question_path(@answer.question), notice: 'You have no rights to delete the answer.'
     end
   end
 
   def mark_as_best
-    @answer.mark_as_best 
     @question = @answer.question
+    @answer.mark_as_best 
   end
 
   private
@@ -35,6 +32,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:body, files: [])
+    params.require(:answer).permit(:body, files: [], links_attributes: [:id, :name, :url, :_destroy])
   end
 end

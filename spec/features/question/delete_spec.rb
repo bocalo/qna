@@ -23,13 +23,15 @@ feature 'User can delete own question', %q{
   end
 
   scenario 'user can delete the file', js: true do
+    
     sign_in(user)
     visit question_path(question)
+    
+    within(all('.question')[1]) do
+      click_on 'Edit question', match: :prefer_exact
 
-    within '.question' do
-      click_on 'Edit question'
       attach_file 'File', "#{Rails.root}/spec/rails_helper.rb"
-      click_on 'Save question'
+      click_on 'Save'
     end
 
     expect(page).to have_link 'rails_helper.rb'

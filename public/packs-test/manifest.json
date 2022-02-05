@@ -1,8 +1,8 @@
 {
   "answer.js": "/packs-test/js/answer-d79fcba635ada50441ae.js",
   "answer.js.map": "/packs-test/js/answer-d79fcba635ada50441ae.js.map",
-  "application.js": "/packs-test/js/application-d0aaf6133424f21c53f4.js",
-  "application.js.map": "/packs-test/js/application-d0aaf6133424f21c53f4.js.map",
+  "application.js": "/packs-test/js/application-049320391ce5a6a38896.js",
+  "application.js.map": "/packs-test/js/application-049320391ce5a6a38896.js.map",
   "entrypoints": {
     "answer": {
       "js": [
@@ -14,10 +14,10 @@
     },
     "application": {
       "js": [
-        "/packs-test/js/application-d0aaf6133424f21c53f4.js"
+        "/packs-test/js/application-049320391ce5a6a38896.js"
       ],
       "js.map": [
-        "/packs-test/js/application-d0aaf6133424f21c53f4.js.map"
+        "/packs-test/js/application-049320391ce5a6a38896.js.map"
       ]
     },
     "question": {

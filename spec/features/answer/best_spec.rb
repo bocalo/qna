@@ -27,21 +27,14 @@ feature 'Author can choose the best answer', %q{
 
     describe 'if he is the author of the question' do
       scenario 'can choose the best answer', js: true do
+        
         sign_in user
         visit question_path(question)
-
         
-        within ".answer[data-answer-id='#{answer.id}']" do
-          expect(page).not_to have_content 'The best answer'
-          
-          click_on 'Best answer'
-          expect(page).to have_content 'The best answer'
-        end
-      
-      end
+        expect(page).not_to have_content 'The best answer'
+        click_on 'Best answer'
+        expect(page).to have_content 'The best answer'
 
-      scenario 'can choose another best answer' do
-        
       end
     end
   end

@@ -8,5 +8,11 @@
   .mb-3 
     = f.label :files, class: 'form-label'
     = f.file_field :files, multiple: true, direct_upload:true, class: 'form-label'
+  .mb-3 
+  p Links:
+  .mb-3
+    = render 'links/form', f: f
+    
   = f.submit 'Create', class: 'btn btn-outline-primary'
+
   

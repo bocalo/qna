@@ -2,29 +2,38 @@
     .answer.mb-3 data-answer-id="#{answer.id}"
       p= answer.body 
       - if answer.files.attached?
-        - answer.files.each do |file|
-          .file.mb-3 data-file-id="#{file.id}"
-            p= link_to file.filename.to_s, url_for(file)
-            - if current_user&.author?(answer)
-              p= link_to "Delete file", attachment_path(file), class: 'btn btn-info', method: :delete, remote: true
+        = render 'shared/attachments', resource: answer
+        
+    - if answer.links.present?  
+      .links.mb-3 
+        p Links:
+        ul 
+          - answer.links.each do |link|
+            = render link
+          /li= link_to link.name, link.url
     
-      - if user_signed_in? && current_user&.author?(answer)
-        p= link_to 'Edit', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
-        
-        = button_to 'Delete answer', answer_path(answer),
-                                      method: :delete
-        - if answer.best
+  - if user_signed_in? && current_user&.author?(answer)
+      p= link_to 'Edit answer', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
+    
+      p= button_to 'Delete answer', answer_path(answer),
+                                    method: :delete,
+                                    remote: true,
+                                    class: 'btn btn-info'
+
+      - if answer.best
           p= 'The best answer'
-        -else
-          = link_to 'Best answer', mark_as_best_answer_path(answer), method: :post, remote: true
-        
+      - else
+        = link_to 'Best answer', mark_as_best_answer_path(answer), method: :post, remote: true, class: 'btn btn-outline-primary'
+       
       = form_with model: answer, remote: true, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
         .form-errors data-form-id="#{answer.id}"
         .mb-3
-          = f.label :body, 'Your answer', class: 'form-label'
+          = f.label :body, 'Your answer', class: 'form-label' 
           = f.text_area :body, class: 'form-control'
         .mb-3 
           = f.label :files, class: 'form-label'
           = f.file_field :files, class: 'form-control', multiple: true, direct_upload: true
+        .mb-3 
+          = render 'links/form', f: f
 
         = f.submit 'Save', class: 'btn btn-outline-primary'
