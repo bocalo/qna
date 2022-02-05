@@ -35,13 +35,6 @@ feature 'Author can choose the best answer', %q{
         click_on 'Best answer'
         expect(page).to have_content 'The best answer'
 
-        # within ".answers[data-answer-id='#{answer.id}']" do
-        #   expect(page).not_to have_content 'The best answer'
-          
-        #   click_on 'Best answer'
-        #   expect(page).to have_content 'The best answer'
-        # end
-      
       end
     end
   end

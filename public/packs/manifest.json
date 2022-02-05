@@ -1,8 +1,8 @@
 {
   "answer.js": "/packs/js/answer-0f6966ee2d7d36ba2aba.js",
   "answer.js.map": "/packs/js/answer-0f6966ee2d7d36ba2aba.js.map",
-  "application.js": "/packs/js/application-28562efd0d0736ec5859.js",
-  "application.js.map": "/packs/js/application-28562efd0d0736ec5859.js.map",
+  "application.js": "/packs/js/application-c91cf84f1807ff4b0d7f.js",
+  "application.js.map": "/packs/js/application-c91cf84f1807ff4b0d7f.js.map",
   "entrypoints": {
     "answer": {
       "js": [
@@ -14,10 +14,10 @@
     },
     "application": {
       "js": [
-        "/packs/js/application-28562efd0d0736ec5859.js"
+        "/packs/js/application-c91cf84f1807ff4b0d7f.js"
       ],
       "js.map": [
-        "/packs/js/application-28562efd0d0736ec5859.js.map"
+        "/packs/js/application-c91cf84f1807ff4b0d7f.js.map"
       ]
     },
     "question": {

@@ -1,0 +1,12 @@
+h4 Rewards: 
+- unless @rewards.empty?
+  - @rewards.each do |reward|
+    p= "Question: #{reward.question.title}"
+    p= "Reward: #{reward.title}"
+    - if reward.image.attached?
+      p= image_tag reward.image, size: "100x100"
+- else 
+  p= 'you have no rewards'
+
+br
+  = link_to 'Back', questions_path

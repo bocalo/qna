@@ -25,11 +25,9 @@ feature 'User can edit his answer', %q{
       end
 
       scenario 'edits his answer', js: true do
-        #save_and_open_page
         click_on 'Edit answer'
 
         within '.answers' do
-          #fill_in 'Your answer', with: 'edited answer' #, match: :prefer_exact
           fill_in 'Your answer', with: 'edited answer'
           click_on 'Save'
 
