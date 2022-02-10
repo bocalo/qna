@@ -12,9 +12,12 @@ import "@nathanvda/cocoon";
 const GistClient = require("gist-client");
 const gistClient = new GistClient();
 import "bootstrap";
-import "./answer";
+import "./answers";
 import "./question";
+import "./votes";
 
+window.jQuery = $;
+window.$ = $;
 window.gistClient = gistClient;
 
 Rails.start();

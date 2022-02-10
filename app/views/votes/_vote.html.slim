@@ -1,0 +1,25 @@
+- if current_user && !current_user.author?(resource)
+	div
+    
+    p = link_to "vote up", polymorphic_path(resource, action: :vote_up),
+                           method: :patch,
+                           data: { type: :json },
+                           class: 'btn-vote',
+                           remote: true
+
+    
+    p = link_to "vote down", polymorphic_path(resource, action: :vote_down),
+                             method: :patch,
+                             data: { type: :json },
+                             class: 'btn-vote',
+                             remote: true
+
+    
+    p = link_to "unvote", polymorphic_path(resource, action: :unvote),
+                          method: :delete,
+                          data: { type: :json },
+                          class: 'btn-vote',
+                          remote: true
+
+    .vote-result data-vote-id='#{resource.class.name.underscore}-#{resource.id}'
+      p = resource.rating

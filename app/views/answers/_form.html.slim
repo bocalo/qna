@@ -1,7 +1,7 @@
 .answer-errors
   = render 'shared/errors', resource: @answer 
 
-= form_with model: [ @question, @answer ], local: false do |f|
+= form_with model: [ @question, @answer ], local: false, class: 'new-answer' do |f|
   .mb-3
     = f.label :body, class: 'form-label'
     = f.text_area :body, class: 'form-control'
@@ -14,5 +14,7 @@
     = render 'links/form', f: f
     
   = f.submit 'Create', class: 'btn btn-outline-primary'
+
+/= link_to 'Back to main', questions_path, remote: true
 
   
