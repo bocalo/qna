@@ -1,4 +1,5 @@
   - if answer.persisted?
+    = render 'votes/vote', resource: answer
     .answer.mb-3 data-answer-id="#{answer.id}"
       p= answer.body 
       - if answer.files.attached?
@@ -19,13 +20,14 @@
                                     method: :delete,
                                     remote: true,
                                     class: 'btn btn-info'
+      
 
       - if answer.best
           p= 'The best answer'
       - else
         = link_to 'Best answer', mark_as_best_answer_path(answer), method: :post, remote: true, class: 'btn btn-outline-primary'
        
-      = form_with model: answer, remote: true, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }, local: false do |f|
+      = form_with model: answer, local: false, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }  do |f|
         .form-errors data-form-id="#{answer.id}"
         .mb-3
           = f.label :body, 'Your answer', class: 'form-label' 
@@ -35,5 +37,5 @@
           = f.file_field :files, class: 'form-control', multiple: true, direct_upload: true
         .mb-3 
           = render 'links/form', f: f
-
+          
         = f.submit 'Save', class: 'btn btn-outline-primary'
