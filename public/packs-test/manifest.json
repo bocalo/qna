@@ -1,34 +1,44 @@
 {
-  "answer.js": "/packs-test/js/answer-d79fcba635ada50441ae.js",
-  "answer.js.map": "/packs-test/js/answer-d79fcba635ada50441ae.js.map",
-  "application.js": "/packs-test/js/application-049320391ce5a6a38896.js",
-  "application.js.map": "/packs-test/js/application-049320391ce5a6a38896.js.map",
+  "answer.js": "/packs-test/js/answer-fd210348cca5251073da.js",
+  "answer.js.map": "/packs-test/js/answer-fd210348cca5251073da.js.map",
+  "application.js": "/packs-test/js/application-072da52eccd4983380a7.js",
+  "application.js.map": "/packs-test/js/application-072da52eccd4983380a7.js.map",
   "entrypoints": {
     "answer": {
       "js": [
-        "/packs-test/js/answer-d79fcba635ada50441ae.js"
+        "/packs-test/js/answer-fd210348cca5251073da.js"
       ],
       "js.map": [
-        "/packs-test/js/answer-d79fcba635ada50441ae.js.map"
+        "/packs-test/js/answer-fd210348cca5251073da.js.map"
       ]
     },
     "application": {
       "js": [
-        "/packs-test/js/application-049320391ce5a6a38896.js"
+        "/packs-test/js/application-072da52eccd4983380a7.js"
       ],
       "js.map": [
-        "/packs-test/js/application-049320391ce5a6a38896.js.map"
+        "/packs-test/js/application-072da52eccd4983380a7.js.map"
       ]
     },
     "question": {
       "js": [
-        "/packs-test/js/question-dbcbbf05c5bccedf36eb.js"
+        "/packs-test/js/question-a80874f647e9645899bf.js"
       ],
       "js.map": [
-        "/packs-test/js/question-dbcbbf05c5bccedf36eb.js.map"
+        "/packs-test/js/question-a80874f647e9645899bf.js.map"
+      ]
+    },
+    "votes": {
+      "js": [
+        "/packs-test/js/votes-e181a18df8e7e2ff8508.js"
+      ],
+      "js.map": [
+        "/packs-test/js/votes-e181a18df8e7e2ff8508.js.map"
       ]
     }
   },
-  "question.js": "/packs-test/js/question-dbcbbf05c5bccedf36eb.js",
-  "question.js.map": "/packs-test/js/question-dbcbbf05c5bccedf36eb.js.map"
+  "question.js": "/packs-test/js/question-a80874f647e9645899bf.js",
+  "question.js.map": "/packs-test/js/question-a80874f647e9645899bf.js.map",
+  "votes.js": "/packs-test/js/votes-e181a18df8e7e2ff8508.js",
+  "votes.js.map": "/packs-test/js/votes-e181a18df8e7e2ff8508.js.map"
 }

@@ -1,34 +1,44 @@
 {
-  "answer.js": "/packs/js/answer-0f6966ee2d7d36ba2aba.js",
-  "answer.js.map": "/packs/js/answer-0f6966ee2d7d36ba2aba.js.map",
-  "application.js": "/packs/js/application-c91cf84f1807ff4b0d7f.js",
-  "application.js.map": "/packs/js/application-c91cf84f1807ff4b0d7f.js.map",
+  "answer.js": "/packs/js/answer-9f05a2d3bd644e51dd80.js",
+  "answer.js.map": "/packs/js/answer-9f05a2d3bd644e51dd80.js.map",
+  "application.js": "/packs/js/application-bf0c2a668fd69359edf5.js",
+  "application.js.map": "/packs/js/application-bf0c2a668fd69359edf5.js.map",
   "entrypoints": {
     "answer": {
       "js": [
-        "/packs/js/answer-0f6966ee2d7d36ba2aba.js"
+        "/packs/js/answer-9f05a2d3bd644e51dd80.js"
       ],
       "js.map": [
-        "/packs/js/answer-0f6966ee2d7d36ba2aba.js.map"
+        "/packs/js/answer-9f05a2d3bd644e51dd80.js.map"
       ]
     },
     "application": {
       "js": [
-        "/packs/js/application-c91cf84f1807ff4b0d7f.js"
+        "/packs/js/application-bf0c2a668fd69359edf5.js"
       ],
       "js.map": [
-        "/packs/js/application-c91cf84f1807ff4b0d7f.js.map"
+        "/packs/js/application-bf0c2a668fd69359edf5.js.map"
       ]
     },
     "question": {
       "js": [
-        "/packs/js/question-ffafc355ec2843a20a3d.js"
+        "/packs/js/question-5f7c2a177e5edd94d093.js"
       ],
       "js.map": [
-        "/packs/js/question-ffafc355ec2843a20a3d.js.map"
+        "/packs/js/question-5f7c2a177e5edd94d093.js.map"
+      ]
+    },
+    "votes": {
+      "js": [
+        "/packs/js/votes-14dac867110ad05234c5.js"
+      ],
+      "js.map": [
+        "/packs/js/votes-14dac867110ad05234c5.js.map"
       ]
     }
   },
-  "question.js": "/packs/js/question-ffafc355ec2843a20a3d.js",
-  "question.js.map": "/packs/js/question-ffafc355ec2843a20a3d.js.map"
+  "question.js": "/packs/js/question-5f7c2a177e5edd94d093.js",
+  "question.js.map": "/packs/js/question-5f7c2a177e5edd94d093.js.map",
+  "votes.js": "/packs/js/votes-14dac867110ad05234c5.js",
+  "votes.js.map": "/packs/js/votes-14dac867110ad05234c5.js.map"
 }
