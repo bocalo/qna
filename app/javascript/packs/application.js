@@ -15,10 +15,15 @@ import "bootstrap";
 import "./answer";
 import "./question";
 import "./votes";
+import createConsumer from "../channels/consumer";
+//import createConsumer from "@rails/actioncable";
+
+// window.App = window.App || {};
+// window.App.cable = createConsumer();
 
 window.jQuery = $;
 window.$ = $;
-//window.gistClient = gistClient;
+//window.gistClient = new gistClient();
 
 Rails.start();
 Turbolinks.start();

@@ -1,8 +1,9 @@
 class AnswersController < ApplicationController
   include Voted
-
+  
   before_action :authenticate_user!, only: [:create, :destroy]
   before_action :find_answer, only: [:destroy, :mark_as_best, :update]
+  after_action :publish_answer, only: :create
   
   def create
     @question = Question.find(params[:question_id])
@@ -35,5 +36,18 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body, files: [], links_attributes: [:id, :name, :url, :_destroy])
+  end
+
+  def publish_answer
+    return if answer.errors.any?
+    ActionCable.server.broadcast(
+      'questions#{params[:question_id]}/answers', 
+        {
+        partial: ApplicationController.render(
+          partial: 'answers/answer',
+          locals: { answer: @answer, current_user: current_user }
+        )
+      }
+    )
   end
 end

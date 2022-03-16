@@ -1,5 +1,5 @@
   - if answer.persisted?
-    = render 'votes/vote', resource: answer
+    = render 'votes/vote', resource: answer, current_user: current_user
     .answer.mb-3 data-answer-id="#{answer.id}"
       p= answer.body 
       - if answer.files.attached?
@@ -12,6 +12,12 @@
           - answer.links.each do |link|
             = render link
           /li= link_to link.name, link.url
+    h3.mt-3.mb-3 Comments:
+    .answer-comment data-comment-answer=answer.id
+      = render answer.comments 
+    - if current_user.present?
+      .comments-form 
+        =render 'comments/form', resource: answer
     
   - if user_signed_in? && current_user&.author?(answer)
       p= link_to 'Edit answer', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
