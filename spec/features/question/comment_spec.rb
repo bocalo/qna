@@ -25,7 +25,7 @@ feature 'User can comment a question', %q{
 
     scenario 'can add comment' do
       #save_and_open_page
-      within '.question .comments-form' do
+      within '.questions .comments-form' do
         fill_in 'Comment text', with: 'Test comment'
         click_on 'Comment'
       end
