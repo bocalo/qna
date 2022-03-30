@@ -25,3 +25,6 @@ Things you may want to cover:
 
 <!-- export RAILS_ENV=test && bin/webpack-dev-server(для тестов)
 bin/webpack-dev-server -->
+
+
+https://thinknetica.teachbase.ru
