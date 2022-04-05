@@ -4,7 +4,7 @@
 
 p.mt-3.span.badge.bg-secondary= 'Add an answer'
 
-- if user_signed_in?
+- if can?(:create, Answer)
   = render 'answers/form'
 
 .answers

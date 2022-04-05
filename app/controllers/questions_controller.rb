@@ -3,8 +3,9 @@ class QuestionsController < ApplicationController
   
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_question, only: [:show, :edit, :update, :destroy]
-
   after_action :publish_question, only: :create
+
+  authorize_resource
 
   def index
     @questions = Question.all
@@ -15,7 +16,7 @@ class QuestionsController < ApplicationController
     @answer.links.new
 
     gon.push({current_user: current_user})
-    gon.push({question_id: @question_id})
+    gon.push({question_id: @question.id})
   end
 
   def new
@@ -75,7 +76,3 @@ class QuestionsController < ApplicationController
   end
 end
 
-#   ActionCable.server.broadcast(
-  #      'questions', 
-  #        @question
-  #  )
