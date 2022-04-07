@@ -1,10 +1,10 @@
 .question data-question-id="#{@question.id}"
-  = render 'votes/vote', resource: @question, current_user: current_user
+  = render 'votes/vote', resource: @question
   h1= @question.title
   p=  @question.body
 
   - if @question.files.attached?
-    = render 'shared/attachments', resource: question, current_user: current_user
+    = render 'shared/attachments', resource: @question
     
   - if @question.links.present? && @question.links.length > 0
     .links.mb-3 
@@ -17,17 +17,17 @@
   h3.mt-3.mb-3 Comments:
   .question-comment data-comment-question=@question.id
     = render @question.comments
-  -if current_user.present?
+  -if can?(:comment, @question)
     .comments-form 
       = render 'comments/form', resource: @question
 
-  - if current_user&.author?(@question)
-    .btn-group
-    = link_to "Edit question", '#', class: 'edit-question-link', data: { question_id: @question.id }
-    br
+  
+  .btn-group
+    = link_to "Edit question", '#', class: 'edit-question-link', data: { question_id: @question.id } if can?(:update, @question)
+  br
     = link_to "Delete question", question_path(@question),
                                           method: :delete,
-                                          data: { confirm: 'Are you sure?' }
+                                          data: { confirm: 'Are you sure?' } if can?(:destroy, @question)
         
     = form_with model: @question, local: false,  class: 'hidden', html: { id: "edit-question-#{@question.id}" } do |f|
       .form-errors data-form-id="#{@question.id}"

@@ -15,22 +15,25 @@
     h3.mt-3.mb-3 Comments:
     .answer-comment data-comment-answer=answer.id
       = render answer.comments 
-    - if current_user.present?
-      .comments-form 
-        =render 'comments/form', resource: answer
+    -if current_user.present?
+    .comments-form 
+      =render 'comments/form', resource: answer
     
-  - if user_signed_in? && current_user&.author?(answer)
-      p= link_to 'Edit answer', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
     
-      p= button_to 'Delete answer', answer_path(answer),
-                                    method: :delete,
-                                    remote: true,
-                                    class: 'btn btn-info'
-      
+    -if can?(:update, answer) 
+        p= link_to 'Edit answer', '#', class: 'edit-answer-link', data: { answer_id: answer.id }
 
-      - if answer.best
-          p= 'The best answer'
-      - else
+    -if can?(:update, answer)  
+        p= button_to 'Delete answer', answer_path(answer),
+                                      method: :delete,
+                                      remote: true,
+                                      class: 'btn btn-info'
+    
+
+    -if answer.best
+        p= 'The best answer'
+    - else
+      -if can?(:mark_as_best, answer)
         = link_to 'Best answer', mark_as_best_answer_path(answer), method: :post, remote: true, class: 'btn btn-outline-primary'
        
       = form_with model: answer, local: false, class: 'hidden', html: { id: "edit-answer-#{answer.id}" }  do |f|

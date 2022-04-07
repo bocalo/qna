@@ -2,10 +2,10 @@ class LinksController < ApplicationController
   before_action :authenticate_user!, only: :destroy
   before_action :link
 
+  authorize_resource
+
   def destroy
-    if current_user&.author?(@link.linkable)
-      @link.destroy
-    end
+    @link.destroy if current_user&.author?(@link.linkable)
   end
 
   private
