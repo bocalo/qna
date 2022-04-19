@@ -39,6 +39,8 @@ RSpec.configure do |config|
   config.include FeatureHelpers, type: :feature
   config.include ActionDispatch::TestProcess
   config.include OmniauthMacros
+  config.include ApiHelpers, type: :request
+  
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

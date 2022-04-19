@@ -23,8 +23,9 @@ Things you may want to cover:
 
 - ...
 
+Read https://github.com/doorkeeper-gem/doorkeeper/issues/561#issuecomment-612857163 for more details.
+
 <!-- export RAILS_ENV=test && bin/webpack-dev-server(для тестов)
 bin/webpack-dev-server -->
-
 
 https://thinknetica.teachbase.ru
