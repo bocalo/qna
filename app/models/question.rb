@@ -4,6 +4,7 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :links, dependent: :destroy, as: :linkable
   has_many :comments, dependent: :destroy, as: :commentable
+  has_many :subscriptions, dependent: :destroy
   
   has_many_attached :files
   has_one :reward, dependent: :destroy
@@ -14,4 +15,17 @@ class Question < ApplicationRecord
   belongs_to :user
 
   validates :title, :body, presence: true
+
+  after_create :calculate_reputation
+  after_create :create_subscription
+
+  private
+
+  def calculate_reputation
+    ReputationJob.perform_later(self)
+  end
+
+  def create_subscription
+    subscriptions.create(user: user)
+  end
 end
