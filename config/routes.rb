@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'search/index'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   
   root to: 'questions#index'
 
+  get  :search, to: 'search#index'
+  
   concern :votable do
     member do
       patch :vote_up
