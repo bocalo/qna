@@ -1,18 +1,18 @@
-/= render @question
-.questions 
-  = render 'question_part', resource: @question
-  .subscription 
-    - if can?(:create, Subscription)
-      = render 'subscriptions/subscription', resource: @question
+- cache resource: @question do
+  .questions 
+    = render 'question_part', resource: @question
+    .subscription 
+      - if can?(:create, Subscription)
+        = render 'subscriptions/subscription', resource: @question
 
-p.mt-3.span.badge.bg-secondary= 'Add an answer'
+    p.mt-3.span.badge.bg-secondary= 'Add an answer'
 
-- if can?(:create, Answer)
-  = render 'answers/form'
+    - if can?(:create, Answer)
+    = render 'answers/form'
 
-.answers
-  = render @question.answers          
+    .answers
+    = render @question.answers          
 
-br
-  = link_to 'Back', questions_path
+    br
+    = link_to 'Back', questions_path
   
