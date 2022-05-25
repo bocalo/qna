@@ -15,10 +15,6 @@ class Ability
     end
   end
 
-  def guest_abilities
-    can :read, :all
-  end
-
   def admin_abilities
     can :manage, :all
   end
