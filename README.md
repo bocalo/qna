@@ -1,28 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
-
 Questions and Answers Thinknetica RoR advanced course application.
 
 This app based on main idea of stackoverflow: people can ask questions and create answers for them, created for lerning how some gems and technologies works.
@@ -120,7 +97,7 @@ Development instructions (how to run on local machine) System requirements
 Config files (copy and edit this files from .sample):
 
     config/database.yml
-    congig/credentials.yml
+    config/credentials.yml
 
 Initial:
 
